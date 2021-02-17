@@ -17,3 +17,8 @@ plot_q5:
 
 plot_q6:
 	@python3 q6_plot.py
+
+gifmaker:
+	@python3 gifmaker.py
+	@rm -r ./figures/line_fit
+	@rm -r ./figures/scplots

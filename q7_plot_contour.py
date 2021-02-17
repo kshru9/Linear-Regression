@@ -12,8 +12,8 @@ y = y.reshape(len(y),)
 y = pd.Series(y)
 
 LR = LinearRegression(fit_intercept=True)
-LR.fit_vectorised(X,y,batch_size = 3,lr = 0.005,n_iter = 500)
+LR.fit_vectorised(X,y,batch_size = 3,lr = 0.005,n_iter = 1000)
 t_0 = 1
 t_1 = 2
-LR.plot_line_fit(X,y,t_0,t_1)
-# LR.plot_surface(X,y,1,2)
+# LR.plot_line_fit(X,y,t_0,t_1)
+LR.plot_surface(X,y,1,2)

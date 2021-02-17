@@ -319,12 +319,12 @@ class LinearRegression():
 
             # print(self.cost_func_history)
 
-            print(len(theta1_history), len(theta0_history), len(self.cost_func_history))
+            # print(len(theta1_history), len(theta0_history), len(self.cost_func_history))
 
             #Setup of meshgrid of theta values
             T0, T1 = np.meshgrid(theta0_vals,theta1_vals)
 
-            fig = plt.figure(figsize = (10,8))
+            fig = plt.figure(figsize = (20,8))
             ax = fig.add_subplot(1, 2, 1, projection='3d')
             ax.plot_surface(T0, T1, J_vals, rstride = 5, cstride = 5, cmap = 'jet', alpha=0.5)
             # ax = plt.axes(projection='3d')
@@ -333,7 +333,7 @@ class LinearRegression():
             ax.set_xlabel('theta 0')
             ax.set_ylabel('theta 1')
             ax.set_zlabel('Cost function')
-            ax.view_init(45, 45)
+            ax.view_init(60, 30)
 
             anglesx = np.array(theta0_history)[1:] - np.array(theta0_history)[:-1]
             anglesy = np.array(theta1_history)[1:] - np.array(theta1_history)[:-1]
@@ -384,6 +384,20 @@ class LinearRegression():
             plt.title("m = "+str(m)+' and '+"c = "+str(c))
             # print(j)
             plt.savefig('./figures/line_fit/'+str(j+1)+'.png')
+
+        c,m = self.theta_history[self.num_of_iterations]
+        regression_line = []
+        for i in x:
+            regression_line.append((m*i)+c)
+        plt.figure()
+        plt.scatter(x,y,color='b')
+        plt.xlabel("x")
+        plt.ylabel("y")
+        m = float("{0:.2f}".format(m))
+        c = float("{0:.2f}".format(c))
+        plt.plot(x,regression_line,'-r')
+        plt.title("m = "+str(m)+' and '+"c = "+str(c))
+        plt.savefig('./figures/line_fit/'+str(self.num_of_iterations+1)+'.png')
 
     def plot_contour(self, X, y, t_0, t_1):
         """

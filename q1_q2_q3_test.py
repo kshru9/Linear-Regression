@@ -23,11 +23,11 @@ for fit_intercept in [True, False]:
     if (sys.argv[1]=="normal"):
         LR.fit_normal(X,y)
     elif (sys.argv[1]=="vectorised"):
-        LR.fit_vectorised(X,y,batch_size=1)
+        LR.fit_vectorised(X,y,batch_size=1,lr=0.001,n_iter=10000)
     elif (sys.argv[1]=="non_vectorised"):
-        LR.fit_non_vectorised(X,y,batch_size=2)
+        LR.fit_non_vectorised(X,y,batch_size=5,lr=0.0001,n_iter=1000)
     elif (sys.argv[1]=="autograd"):
-        LR.fit_autograd(X,y,batch_size=1)
+        LR.fit_autograd(X,y,batch_size=1,lr=0.001,n_iter=10000)
     else:
         LR.fit_normal(X,y)
     

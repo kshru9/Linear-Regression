@@ -50,15 +50,15 @@ fig_count = 1
 for N in range(1,8,2):
     x,y = generate_data(N)
     theta = vary_degree(list_of_degrees, x,y)
-    plt.subplot(2,2,fig_count)
+    # plt.subplot(2,2,fig_count)
     plt.plot(list_of_degrees,theta, label="N= "+str(N))
 
-    plt.xlabel("degrees")
-    plt.ylabel("thetas")
+plt.xlabel("degrees")
+plt.ylabel("thetas")
 
-    plt.yscale("log")
+plt.yscale("log")
 
-    plt.legend()
-    fig_count+=1
-plt.savefig("./figures/q6_ind"+str(N)+".png", dpi=400)
+plt.legend()
+    # fig_count+=1
+plt.savefig("./figures/q6_comb"+str(N)+".png", dpi=400)
     

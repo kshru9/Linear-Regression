@@ -6,9 +6,6 @@
 
 > Write the answers for the subjective questions here
 
-- As we increase the no. of samples, the time required for vectorized gradient descent increases very sharply.
- - But there is no significant change in the time required for normal equation
-
 Theoretical time complexity for normal method is O(P^2 * N) + O(D^3)
 Theoretical time complexity for gradient descent method is O((t+N) * D^2)
 

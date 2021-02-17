@@ -1,0 +1,38 @@
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from linearRegression.linearRegression import LinearRegression
+from metrics import *
+import sys
+
+np.random.seed(42)
+
+N = 30
+P = 5
+X = pd.DataFrame(np.random.randn(N, P))
+y = pd.Series(np.random.randn(N))
+
+
+for fit_intercept in [True, False]:
+    LR = LinearRegression(fit_intercept=fit_intercept)
+    # LR.fit_vectorised(X, y) # here you can use fit_non_vectorised / fit_autograd methods
+    # LR.fit_non_vectorised(X, y, lr=0.0001)
+    # LR.fit_normal(X,y)
+
+    if (sys.argv[1]=="normal"):
+        LR.fit_normal(X,y)
+    elif (sys.argv[1]=="vectorised"):
+        LR.fit_vectorised(X,y,batch_size=1)
+    elif (sys.argv[1]=="non_vectorised"):
+        LR.fit_non_vectorised(X,y,batch_size=2)
+    elif (sys.argv[1]=="autograd"):
+        LR.fit_autograd(X,y,batch_size=1)
+    else:
+        LR.fit_normal(X,y)
+    
+    
+    y_hat = LR.predict(X)
+
+    print('RMSE: ', rmse(y_hat, y))
+    print('MAE: ', mae(y_hat, y))
